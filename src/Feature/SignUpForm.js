@@ -71,89 +71,128 @@ export default function SignUpForm() {
     navigate("/signin", { replace: true });
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <section>
-        <label htmlFor="name">Name : </label>
-        <input
-          type="text"
-          id="name"
-          required
-          value={nameValue}
-          onInput={nameChangeHandler}
-          onBlur={nameBlureHandler}
-        />
-        {nameHasError && <p>Name should include only alphabates and spaces</p>}
-      </section>
-      <section>
-        <label htmlFor="email">Email : </label>
-        <input
-          type="email"
-          id="email"
-          required
-          value={emailValue}
-          onChange={emailChangeHandler}
-          onBlur={emailBlureHandler}
-        />
-      </section>
-      <section>
-        <label htmlFor="contact">Contact Number : </label>
-        <input
-          type="number"
-          id="contact"
-          value={numberValue}
-          required
-          onChange={numberChangeHandler}
-          onBlur={numberBlureHandler}
-        />
-        {numberHasError && <p>Contanct number should be 10 digits</p>}
-      </section>
-      <section>
-        <label>Gender : </label>
+    <div className="container shadow-sm p-3 mt-5 bg-body rounded">
+      <form className="row gy-2" onSubmit={handleSubmit}>
         <section>
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
           <input
-            type="radio"
-            name="gender"
-            id="male"
-            value="male"
-            onChange={genderChangeHandler}
+            type="text"
+            id="name"
+            required
+            className="form-control"
+            value={nameValue}
+            onInput={nameChangeHandler}
+            onBlur={nameBlureHandler}
           />
-          <label htmlFor="male">Male</label>
+          {nameHasError && (
+            <p className="form-text text-danger">
+              Provide a valid name (should include only alphabates and spaces).
+            </p>
+          )}
         </section>
         <section>
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
           <input
-            type="radio"
-            name="gender"
-            id="female"
-            value="female"
-            onChange={genderChangeHandler}
+            type="email"
+            id="email"
+            className="form-control"
+            required
+            value={emailValue}
+            onChange={emailChangeHandler}
+            onBlur={emailBlureHandler}
           />
-          <label htmlFor="female">Female</label>
+          {emailHasError && (
+            <p className="form-text text-danger">Provide a valid email.</p>
+          )}
         </section>
-        {genderHasError && <p>Select a gender</p>}
-      </section>
-      <section>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={passwordValue}
-          required
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlureHandler}
-        />
-        {passwordHasError && (
-          <p>
-            Password should be atleast 8 character combination of capital and
-            small alphabates, numbers, special characters(#!%$@)
-          </p>
-        )}
-      </section>
-      <section>
-        <button type="submit" disabled={!formValid}>
-          Submit
-        </button>
-      </section>
-      <Link to="/signin">SignIn</Link>
-    </form>
+        <section>
+          <label htmlFor="contact" className="form-label">
+            Contact Number
+          </label>
+          <input
+            type="number"
+            id="contact"
+            className="form-control"
+            value={numberValue}
+            required
+            onChange={numberChangeHandler}
+            onBlur={numberBlureHandler}
+          />
+          {numberHasError && (
+            <p className="form-text text-danger">
+              Contanct number should be 10 digits
+            </p>
+          )}
+        </section>
+        <section>
+          <label className="form-label">Gender : </label>
+          <section className="form-check">
+            <input
+              type="radio"
+              name="gender"
+              id="male"
+              className="form-check-input"
+              value="male"
+              onChange={genderChangeHandler}
+            />
+            <label htmlFor="male" className="form-label">
+              Male
+            </label>
+          </section>
+          <section className="form-check">
+            <input
+              type="radio"
+              name="gender"
+              id="female"
+              className="form-check-input"
+              value="female"
+              onChange={genderChangeHandler}
+            />
+            <label htmlFor="female" className="form-label">
+              Female
+            </label>
+          </section>
+          {genderHasError && (
+            <p className="form-text text-danger">Select a gender</p>
+          )}
+        </section>
+        <section>
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="form-control"
+            value={passwordValue}
+            required
+            onChange={passwordChangeHandler}
+            onBlur={passwordBlureHandler}
+          />
+          {passwordHasError && (
+            <p className="form-text text-danger">
+              Password should be atleast 8 character combination of capital and
+              small alphabates, numbers, special characters(#!%$@)
+            </p>
+          )}
+        </section>
+        <section className="d-flex">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={!formValid}
+          >
+            Submit
+          </button>
+          <Link to="/signin" className="nav-link">
+            SignIn
+          </Link>
+        </section>
+      </form>
+    </div>
   );
 }

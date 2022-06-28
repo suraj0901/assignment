@@ -1,10 +1,15 @@
-const validEmail =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-export const isEmailValid = (email) => validEmail.test(email);
+// const validEmail =
+export const isEmailValid = (email) =>
+  /(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+    email
+  );
 
-const validPassword =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-export const isPasswordValid = (password) => validPassword.test(password);
+// const validPassword =
+//  ;
+export const isPasswordValid = (password) =>
+  /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$#!%*?&]{8,}$/.test(
+    password
+  );
 
 export const isNameValid = (name) => name.trim() !== "";
 
