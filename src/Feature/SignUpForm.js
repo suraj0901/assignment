@@ -6,7 +6,7 @@ import {
   isGenderValid,
   isNameValid,
   isPasswordValid,
-} from "./validate";
+} from "../Component/validate";
 
 export default function SignUpForm() {
   const {
@@ -183,7 +183,7 @@ export default function SignUpForm() {
         <section className="d-flex">
           <button
             type="submit"
-            className="btn btn-primary"
+            className={`btn ${formValid ? "btn-primary" : "btn-secondary"} `}
             disabled={!formValid}
           >
             Submit

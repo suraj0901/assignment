@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useInput from "../hooks/useInput";
-import { isEmailValid, isPasswordValid } from "./validate";
+import { isEmailValid, isPasswordValid } from "../Component/validate";
 
 export default function SignInForm() {
   const { signIn } = useAuth(false)[1];
@@ -80,7 +80,7 @@ export default function SignInForm() {
         <section className="d-flex ">
           <button
             type="submit"
-            className="btn btn-primary"
+            className={`btn ${formValid ? "btn-primary" : "btn-secondary"} `}
             disabled={!formValid}
           >
             Submit
